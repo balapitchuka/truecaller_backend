@@ -1,0 +1,362 @@
+{
+	"info": {
+		"_postman_id": "8f55987d-7afd-4a24-9ecf-3eea38168397",
+		"name": "TrueCaller API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "auth",
+			"item": [
+				{
+					"name": "api/auth/login/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonBody = pm.response.json();\r",
+									"pm.environment.set('truecaller_jwt', JSON.stringify(jsonBody.access)); //will store the whole array as string\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE0NDIwNDAzLCJqdGkiOiI3MGE0ZjljNGE5OTc0ZGViYjAzOGYyNDk2MTVjMmY0ZSIsInVzZXJfaWQiOjF9.wkoKV50IN8W3J2gRLLbrfqqfsOaB8ke4bn6_ZNGlAL4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone_no\" : \"911234567890\",\r\n    \"password\" : \"1234\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/login/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"login",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api/auth/register/",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone_no\" : \"919999912345\",\r\n    \"password\" : \"B123@111\",\r\n    \"password2\" : \"B123@111\",\r\n    \"name\" : \"Trump Donald\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/register/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"register",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api/auth/token/refresh/",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.environment.set(\"variable_key\", \"variable_value\");\r",
+									"pm.variables.get(\"variable_key\");\r",
+									"pm.variables.get(\"variable_key\");"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refresh\": \"eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTYxNDU3NTk4OSwianRpIjoiNDJhNzIxMzkyMTA0NGY4MmFmNzgxNjE4NWM4ZTM3NTgiLCJ1c2VyX2lkIjoxfQ.x7Bx-chkdCJYes1G9d8UaZQAA5NWeyBpv4WZz5Z0itg\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/auth/token/refresh/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"auth",
+								"token",
+								"refresh",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "contacts",
+			"item": [
+				{
+					"name": "api/contacts/search_phone/<phone_no>/",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE0NTExMzExLCJqdGkiOiI4YTM4N2ViZjVlN2M0MDRiOTZlN2ViNzI5OTI2YTQ5MiIsInVzZXJfaWQiOjF9.ZP9hKHb4JBPOpo3XFRpt8-J59a3-bD8Pk_vxfZy_IQY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/contacts/search_phone/901235908907/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"contacts",
+								"search_phone",
+								"901235908907",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api/contacts/spam/",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE0NDk1MjE1LCJqdGkiOiI1MjhkNWQwYzk2N2Q0ODY4OWU1Y2ZkOWE1MDhkYzY2MiIsInVzZXJfaWQiOjF9.y6YUyuuNaAX-SfUI6-4qejXbL5rIq9HL7xz651n4h24",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone_no\" : \"901235908907\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/contacts/spam/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"contacts",
+								"spam",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api/contacts/search_name/<name>/",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE0NDk1MjE1LCJqdGkiOiI1MjhkNWQwYzk2N2Q0ODY4OWU1Y2ZkOWE1MDhkYzY2MiIsInVzZXJfaWQiOjF9.y6YUyuuNaAX-SfUI6-4qejXbL5rIq9HL7xz651n4h24",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/contacts/search_name/Dhoni/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"contacts",
+								"search_name",
+								"Dhoni",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "api/contacts/detail/",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE0NTA3MzQ4LCJqdGkiOiJiMGFmNjVmNmNjNjQ0ZDgwODliZGJmNzk3ZTQ2MTY1OCIsInVzZXJfaWQiOjF9.8jG5T165gZjCRmO9v_nDpgnFbwoD5OMackRd7-YvTUs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"phone_no\" : \"901235908907\",\r\n    \"name\" : \"Mahendra Singh  Dhoni\",\r\n    \"spam\" : true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8000/api/contacts/detail/",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8000",
+							"path": [
+								"api",
+								"contacts",
+								"detail",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "http://127.0.0.1:8000/api/contacts/spam/",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNjE0NDg5ODMyLCJqdGkiOiJlNTM3MzEyMTE3MGU0YzM0ODJlMDdiZDEwMGZkYzc2MiIsInVzZXJfaWQiOjF9.iKRWH25blx57wVheBaZOMddkWfJS__xRcKIWe6HSABs",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"phone_no\" : \"901235908907\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/contacts/spam/",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"contacts",
+						"spam",
+						""
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

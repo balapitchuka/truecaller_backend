@@ -1,0 +1,29 @@
+[
+    {
+      "model": "accounts.user",
+      "pk": 2,
+      "fields": {
+        "name" : "Sachin Tendulkar",
+        "phone_no" : "919087654321",
+        "password" : "JohnRocks123@"
+      }
+    },
+    {
+      "model": "accounts.user",
+      "pk": 3,
+      "fields": {
+        "name" : "Rahul Dravid",
+        "phone_no" : "919876543210",
+        "password" : "JohnRocks123@"
+      }
+    },
+    {
+        "model": "accounts.user",
+        "pk": 4,
+        "fields": {
+          "name" : "Virat Kohli",
+          "phone_no" : "919678012345",
+          "password" : "JohnRocks123@"
+        }
+    }
+]
